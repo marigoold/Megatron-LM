@@ -15,7 +15,7 @@ python3 pretrain_gpt.py \
        --hidden-size 384 \
        --num-attention-heads 16 \
        --micro-batch-size 4 \
-       --global-batch-size 8 \
+       --global-batch-size 4 \
        --seq-length 256 \
        --max-position-embeddings 256 \
        --train-iters 500000 \
@@ -34,14 +34,13 @@ python3 pretrain_gpt.py \
        --lr-decay-style cosine \
        --weight-decay 1e-2 \
        --clip-grad 1.0 \
-       --lr-warmup-fraction .01 \
-       --activations-checkpoint-method uniform \
-       --log-interval 100 \
+       --lr-warmup-fraction .00 \
+       --log-interval 1 \
        --save-interval 10000 \
        --eval-interval 1000 \
        --eval-iters 10 \
        --no-bias-dropout-fusion \
+       --activations-checkpoint-method uniform 
        # --fp16
-
        # --seq-length 1024 \
        # --max-position-embeddings 1024 \

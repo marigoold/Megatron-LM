@@ -86,6 +86,8 @@ def loss_func(loss_mask, output_tensor):
     # Reduce loss for logging.
     averaged_loss = average_losses_across_data_parallel_group([loss])
 
+    with open('gpt_loss.txt', 'a') as f:
+        f.writelines([str(loss.detach().cpu().numpy()) + '\n'])
     return loss, {'lm loss': averaged_loss[0]}
 
 
