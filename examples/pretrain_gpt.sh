@@ -11,13 +11,13 @@ CHECKPOINT_PATH=checkpoints/gpt_base
 DATA_PATH=/workspace/data/libai_dataset/loss_compara_content_sentence
 
 python3 pretrain_gpt.py \
-       --num-layers 6 \
-       --hidden-size 384 \
+       --num-layers 12 \
+       --hidden-size 768 \
        --num-attention-heads 16 \
        --micro-batch-size 4 \
        --global-batch-size 4 \
-       --seq-length 256 \
-       --max-position-embeddings 256 \
+       --seq-length 1024 \
+       --max-position-embeddings 1024 \
        --train-iters 500000 \
        --lr-decay-iters 320000 \
        --save $CHECKPOINT_PATH \
@@ -35,12 +35,11 @@ python3 pretrain_gpt.py \
        --weight-decay 1e-2 \
        --clip-grad 1.0 \
        --lr-warmup-fraction .00 \
-       --log-interval 1 \
+       --log-interval 20 \
        --save-interval 10000 \
        --eval-interval 1000 \
        --eval-iters 10 \
        --no-bias-dropout-fusion \
-       --activations-checkpoint-method uniform 
-       # --fp16
-       # --seq-length 1024 \
-       # --max-position-embeddings 1024 \
+       --activations-checkpoint-method uniform \
+       --attention-dropout 0 \
+       --hidden-dropout 0 
